@@ -15,13 +15,17 @@
 **Завдання 1.1:** INNER JOIN - список товарів з категоріями та постачальниками
 
 ```sql
--- Вставте ваш SQL код тут
+SELECT p.product_name, c.category_name, s.company_name, p.unit_price
+FROM products p
+INNER JOIN categories c ON p.category_id = c.category_id
+INNER JOIN suppliers s ON p.supplier_id = s.supplier_id
+ORDER BY c.category_name, p.product_name;
 
 ```
 
 **Результат виконання:**
 ```
--- Вставте скріншот або текст результату (перші 10 рядків)
+-- lr2/skrin/Screenshot_1.png
 
 ```
 
@@ -32,13 +36,19 @@
 **Завдання 1.2:** LEFT JOIN - клієнти з кількістю замовлень
 
 ```sql
--- Вставте ваш SQL код тут
+SELECT c.contact_name, c.customer_type, r.region_name,
+      COUNT(o.order_id) as order_count
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+LEFT JOIN regions r ON c.region_id = r.region_id
+GROUP BY c.customer_id, c.contact_name, c.customer_type, r.region_name
+ORDER BY order_count DESC;
 
 ```
 
 **Результат виконання:**
 ```
--- Вставте результат
+-- lr2/skrin/Screenshot_2.png
 
 ```
 
@@ -49,13 +59,24 @@
 **Завдання 1.3:** Множинне з'єднання - детальна інформація про замовлення
 
 ```sql
--- Вставте ваш SQL код тут (з'єднання 4-5 таблиць)
+SELECT
+    r.region_name AS "Регіон Доставки",
+    p.product_name AS "Назва Товару",
+    SUM(oi.quantity) AS "Загальна Кількість (шт.)",
+    ROUND(SUM(oi.unit_price * oi.quantity * (1 - oi.discount)), 2) AS "Загальний Дохід"
+FROM regions r
+JOIN orders o ON r.region_id = o.ship_region_id  -- 1. З'єднання Регіонів з Замовленнями
+JOIN order_items oi ON o.order_id = oi.order_id  -- 2. З'єднання Замовлень з Деталями Замовлень
+JOIN products p ON oi.product_id = p.product_id  -- 3. З'єднання Деталей Замовлень з Товарами
+WHERE o.order_status = 'delivered' -- Враховуємо лише виконані замовлення
+GROUP BY r.region_name, p.product_name
+ORDER BY "Регіон Доставки" ASC, "Загальний Дохід" DESC;
 
 ```
 
 **Результат виконання:**
 ```
--- Вставте результат
+-- lr2/skrin/Screenshot_3.png
 
 ```
 
