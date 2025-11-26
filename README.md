@@ -140,6 +140,8 @@ lr4/webadminpanel-main/
     ├── app.log                          # Файл логу веб-додатку
     ├── requirements.txt                 # Залежності Python
     ├── docker-compose.yml               # Docker композиція
+    ├── .dockerignore                    # Файл Dockerignore
+    ├── Dockerfile                       # Файл Docker 
     ├── static/
     │   └── styles.css                   # CSS стилі
     ├── templates/                       # HTML шаблони
