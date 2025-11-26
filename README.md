@@ -13,6 +13,7 @@ Datbaselr/
 
 ## Структура лабораторних робіт
 ### Лабораторна робота 1 Робота з СУБД PostgreSQL та основи SQL
+https://github.com/Anima55/databaselr/tree/main/lr1
 ```
 lr1/
 ├── skrin/
@@ -83,6 +84,7 @@ lr1/
 └── lab01-report.md
 ```
 ### Лабораторна робота 2 Створення складних SQL запитів
+https://github.com/Anima55/databaselr/tree/main/lr2
 ```
 lr2/
 ├── skrin/
@@ -104,6 +106,7 @@ lr2/
 └── lab02-report.md
 ```
 ### Лабораторна робота 3 Модифікація даних та транзакції
+https://github.com/Anima55/databaselr/tree/main/lr3
 ```
 lr3/
 ├── lab03-report.md          # Основний звіт з лабораторної роботи
@@ -126,6 +129,7 @@ lr3/
     └── 3_3.png              # Складна бізнес-логіка
 ```
 ### Лабораторна робота 4 Розробка реляційної бази даних з простою інтеграцією
+https://github.com/Anima55/databaselr/tree/main/lr4/webadminpanel-main
 ```
 lr4/webadminpanel-main/
 ├── app.log                              # Головний файл логу дій
